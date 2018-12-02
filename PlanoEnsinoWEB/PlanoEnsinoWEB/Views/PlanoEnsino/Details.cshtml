@@ -1,0 +1,122 @@
+﻿@model PlanoEnsinoWEB.Models.PlanoEnsino
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PlanoEnsino</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ComponenteCurricular.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComponenteCurricular.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.semestre_letivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.semestre_letivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.colegiado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.colegiado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.possibilidade_integracao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.possibilidade_integracao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.avaliacao_curricular)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.avaliacao_curricular)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.referencias_aprofundamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.referencias_aprofundamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.conteudo_programado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.conteudo_programado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cronograma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cronograma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estrategia_recuperacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estrategia_recuperacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.metodologia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.metodologia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.professores)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.professores)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdPlanoEnsino }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

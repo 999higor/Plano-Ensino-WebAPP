@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PlanoEnsinoWEB.Models.Curso>
+
+@{
+    ViewBag.Title = "Cursos";
+}
+
+<h2>Cursos</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.objetivo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.objetivo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdCurso }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.IdCurso }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.IdCurso })
+        </td>
+    </tr>
+}
+
+</table>

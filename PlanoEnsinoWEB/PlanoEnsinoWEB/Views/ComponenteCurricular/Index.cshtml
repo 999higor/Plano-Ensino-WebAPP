@@ -1,0 +1,99 @@
+﻿@model IEnumerable<PlanoEnsinoWEB.Models.ComponenteCurricular>
+
+@{
+    ViewBag.Title = "Componentes Curriculares";
+}
+
+<h2>Componentes Curriculares</h2>
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Curso.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.semestre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.objetivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modalidade_oferta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ementa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.referencias_basicas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.referencias_complementares)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_aula_distancia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_aula_presencial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_relogio_distancia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hora_relogio_presencial)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Curso.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.semestre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.objetivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modalidade_oferta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ementa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.referencias_basicas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.referencias_complementares)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_aula_distancia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_aula_presencial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_relogio_distancia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hora_relogio_presencial)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdComponenteCurricular }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.IdComponenteCurricular }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.IdComponenteCurricular })
+        </td>
+    </tr>
+}
+
+</table>

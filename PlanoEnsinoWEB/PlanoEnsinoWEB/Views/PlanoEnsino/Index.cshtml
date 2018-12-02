@@ -1,0 +1,106 @@
+﻿@model IEnumerable<PlanoEnsinoWEB.Models.PlanoEnsino>
+
+@{
+    ViewBag.Title = "Planos de Ensino";
+}
+
+<h2>Planos de Ensino</h2>
+ 
+
+<p>
+    @Html.ActionLink("Criar Novo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ComponenteCurricular.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ano)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.semestre_letivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.colegiado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.possibilidade_integracao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.avaliacao_curricular)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.referencias_aprofundamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.conteudo_programado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cronograma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estrategia_recuperacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.metodologia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.professores)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComponenteCurricular.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ano)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.semestre_letivo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.colegiado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.possibilidade_integracao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.avaliacao_curricular)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.referencias_aprofundamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.conteudo_programado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cronograma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estrategia_recuperacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.metodologia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.professores)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdPlanoEnsino }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.IdPlanoEnsino }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.IdPlanoEnsino })
+        </td>
+    </tr>
+}
+
+</table>

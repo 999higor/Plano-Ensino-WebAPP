@@ -1,0 +1,114 @@
+﻿@model PlanoEnsinoWEB.Models.ComponenteCurricular
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ComponenteCurricular</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Curso.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Curso.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.semestre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.semestre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.objetivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.objetivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.modalidade_oferta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.modalidade_oferta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ementa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ementa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.referencias_basicas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.referencias_basicas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.referencias_complementares)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.referencias_complementares)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hora_aula_distancia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hora_aula_distancia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hora_aula_presencial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hora_aula_presencial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hora_relogio_distancia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hora_relogio_distancia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hora_relogio_presencial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hora_relogio_presencial)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdComponenteCurricular }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
