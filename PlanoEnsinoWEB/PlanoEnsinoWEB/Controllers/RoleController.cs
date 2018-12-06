@@ -17,12 +17,13 @@ namespace PlanoEnsinoWEB.Controllers
             context = new ApplicationDbContext();
         }
 
+        [Authorize (Roles ="Admin")]
         public ActionResult Index()
         {
             var Roles = context.Roles.ToList();
             return View(Roles);
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             var Role = new IdentityRole();
@@ -30,6 +31,7 @@ namespace PlanoEnsinoWEB.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(IdentityRole Role)
         {
             context.Roles.Add(Role);

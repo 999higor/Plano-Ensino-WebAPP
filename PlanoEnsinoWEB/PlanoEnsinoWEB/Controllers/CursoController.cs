@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PlanoEnsinoWEB.Models;
+using PagedList;
 
 namespace PlanoEnsinoWEB.Controllers
 {
@@ -16,9 +17,51 @@ namespace PlanoEnsinoWEB.Controllers
 
         // GET: Curso
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            return View(db.Cursoes.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "nome_desc" : "";
+            ViewBag.NameSortParm = sortOrder == "Data" ? "date_desc" : "Data";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var cursos = from s in db.Cursoes
+                         select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                cursos = cursos.Where(s => s.nome.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "nome_desc":
+                    cursos = cursos.OrderByDescending(s => s.nome);
+                    break;
+                case "Data":
+                    cursos = cursos.OrderBy(s => s.objetivo);
+                    break;
+                case "data_desc":
+                    cursos = cursos.OrderByDescending(s => s.objetivo);
+                    break;
+                default:
+                    cursos = cursos.OrderBy(s => s.nome);
+                    break;
+            }
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(cursos.ToPagedList(pageNumber, pageSize));
+            //return View(db.Cursoes.ToList());
         }
 
         // GET: Curso/Details/5
@@ -37,8 +80,57 @@ namespace PlanoEnsinoWEB.Controllers
             return View(curso);
         }
 
-        // GET: Curso/Create
-        [Authorize(Roles = "Admin")]
+       /* public ActionResult Pesquisa()
+        {
+            using (var db = new PlanoEnsinoContext())
+            {
+                var _curso = db.Cursoes.ToList();
+                var data = new Curso()
+                {
+                    Cursos = _curso
+                };
+                return View(data);
+            }
+        }*/
+
+        /*[HttpPost]
+        public ActionResult Pesquisa(Curso _curso)
+        {
+            using (var db = new PlanoEnsinoContext())
+            {
+                var cursoPesquisa = from cursorec in db.Cursoes
+                                      where ((_curso.nome == null) || (cursorec.nome == _curso.nome.Trim()))
+                             
+                                      select new
+                                      {
+                                          IdCurso = cursorec.IdCurso,
+                                          nome = cursorec.nome,
+                                          objetivo = cursorec.objetivo,
+                                       
+                                      };
+                List<Curso> ListaCursos = new List<Curso>();
+
+                foreach (var reg in cursoPesquisa)
+                {
+                    Curso cursoValor = new Curso();
+                    cursoValor.IdCurso = reg.IdCurso;
+                    cursoValor.nome = reg.nome;
+                    cursoValor.objetivo = reg.objetivo;
+                    
+                    ListaCursos.Add(cursoValor);
+                }
+
+                _curso. = ListaCursos;
+
+                return View(_curso);
+            }
+        }*/
+    
+
+
+
+// GET: Curso/Create
+[Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();

@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PlanoEnsinoWEB.Models;
+using PagedList;
 
 namespace PlanoEnsinoWEB.Controllers
 {
@@ -16,10 +17,53 @@ namespace PlanoEnsinoWEB.Controllers
 
         // GET: ComponenteCurricular
         [Authorize]
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             var componenteCurriculars = db.ComponenteCurriculars.Include(c => c.Curso);
-            return View(componenteCurriculars.ToList());
+
+
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "nome_desc" : "";
+            ViewBag.NameSortParm = sortOrder == "Data" ? "date_desc" : "Data";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var comp = from s in db.ComponenteCurriculars
+                         select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                comp = comp.Where(s => s.nome.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "nome_desc":
+                    comp = comp.OrderByDescending(s => s.nome);
+                    break;
+                case "Data":
+                    comp = comp.OrderBy(s => s.codigo_curso);
+                    break;
+                case "data_desc":
+                    comp = comp.OrderByDescending(s => s.codigo_curso);
+                    break;
+                default:
+                    comp = comp.OrderBy(s => s.nome);
+                    break;
+            }
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(comp.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: ComponenteCurricular/Details/5

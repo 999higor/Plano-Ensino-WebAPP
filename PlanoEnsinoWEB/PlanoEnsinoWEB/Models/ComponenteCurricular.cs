@@ -64,6 +64,7 @@ namespace PlanoEnsinoWEB.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PlanoEnsino> PlanoEnsinoes { get; set; }
 
+        [Display(Name = "Curso")]
         public virtual Curso Curso { get; set; }
     }
 }

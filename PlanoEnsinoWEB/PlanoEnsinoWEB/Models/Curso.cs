@@ -28,6 +28,8 @@ namespace PlanoEnsinoWEB.Models
         [Display(Name = "Objetivo do Curso")]
         public string objetivo { get; set; }
 
+        //public List<Curso> Cursos { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ComponenteCurricular> ComponenteCurriculars { get; set; }
     }
